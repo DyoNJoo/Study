@@ -4,7 +4,7 @@
 #include <windows.h>
 int main(void)
 {
-	printf("Welcome to the Mini game, you son of bitch!\n\n");
+	printf("Welcome to the Mini game!\n\n");
 	printf("Press any key to continue...\n");
 	int ch3 = _getch();
 
