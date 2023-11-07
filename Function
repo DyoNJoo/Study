@@ -1,0 +1,116 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void score_fun();
+void grade_fun(int score);
+void alpa_err(char op);
+void score_err(int score);
+void end_fun(char op);
+
+void main()
+{
+	char choice;
+		
+	printf("프로그램을 시작하시겠습니까? (Y/N) => ");
+	scanf("%c", &choice);
+	
+	switch (choice)
+	{
+	case 'y':
+	case 'Y':
+		score_fun();
+		break;
+	case 'n':
+	case 'N':
+		end_fun(choice);
+		break;
+	default:
+		alpa_err(choice);
+		break;
+	}
+}
+
+void score_fun()
+{
+	int score_m, score_f, total = 0;
+	printf("중간고사 점수입력 (50점 만점) : ");
+	scanf("%d", &score_m);
+
+	if (score_m < 0 || score_m > 50)
+		score_err(score_m);
+	else
+		total += score_m;
+
+	printf("기말고사 점수입력 (50점 만점) : ");
+	scanf("%d", &score_f);
+
+	if (score_f < 0 || score_f > 50)
+		score_err(score_f);
+	else
+		total += score_f;
+	grade_fun(total);
+}
+
+void grade_fun(int score)
+{
+	if (score >= 95 && score <= 100)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : A+학점\n\n");
+	}
+	else if (score >= 90 && score <= 94)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : A0학점\n\n");
+	}
+	else if (score >= 85 && score <= 89)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : B+학점\n\n");
+	}
+	else if (score >= 80 && score <= 84)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : B0학점\n\n");
+	}
+	else if (score >= 75 && score <= 79)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : C+학점\n\n");
+	}
+	else if (score >= 70 && score <= 74)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : C0학점\n\n");
+	}
+	else if (score >= 65 && score <= 69)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : D+학점\n\n");
+	}
+	else if (score >= 60 && score <= 64)
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : D0학점\n\n");
+	}
+	else
+	{
+		printf(" score_fun() 함수에서 전달받은 값 : %d\n", score);
+		printf(" 등급 : F학점\n\n");
+	}
+}
+void alpa_err(char op)
+{
+	printf("올바른 입력값이 아닙니다. 다시 시도 해주세요.\n");
+}
+
+void score_err(int score)
+{
+	printf("유효 범위가 아닌 점수입니다.\n");
+	score_fun();
+}
+
+void end_fun(char op)
+{
+	printf("프로그램을 종료합니다.\n");
+}
