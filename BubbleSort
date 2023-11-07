@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void bubbleSort(int arr[], int n) {
+    int temp;
+    int swapped;
+
+    for (int i = 0; i < n - 1; i++) {
+        swapped = 0; // 스왑 여부 플래그 초기화
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // 두 원소를 교환
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = 1; // 스왑 했음을 표시
+            }
+        }
+
+        // 스왑이 한 번도 일어나지 않았으면 배열이 이미 정렬되어있는 상태
+        if (swapped == 0) {
+            break;
+        }
+    }
+}
+
+int main() {
+    int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("정렬 전 배열: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    bubbleSort(arr, n);
+
+    printf("정렬 후 배열: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
